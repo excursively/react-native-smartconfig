@@ -49,20 +49,26 @@ RCT_EXPORT_MODULE();
 
 - (instancetype)init
 {
-    if (self = [super init]) {
-        self.defaultOptions = @{
-                                @"type": @"esptouch",
-                                @"ssid": @"ssid",
-                                @"password": @"password",
-                                @"hidden": @NO,
-                                @"bssid": @"",
-                                @"timeout": @50000
-                                };
-        self._esptouchDelegate = [[EspTouchDelegateImpl alloc]init];
-    }
+    self = [super init];
+    self.defaultOptions = @{
+                            @"type": @"esptouch",
+                            @"ssid": @"ssid",
+                            @"password": @"password",
+                            @"hidden": @NO,
+                            @"bssid": @"",
+                            @"timeout": @50000
+                            };
+    self._esptouchDelegate = [[EspTouchDelegateImpl alloc]init];
     return self;
 }
-RCT_EXPORT_METHOD(stop) {
+
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
+RCT_EXPORT_METHOD(stop)
+{
     [self cancel];
 }
 
