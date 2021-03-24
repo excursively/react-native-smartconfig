@@ -13,8 +13,6 @@ import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 public class RCTSmartconfigPackage implements ReactPackage {
 
-
-
     @Override
     public List<NativeModule> createNativeModules(
                                ReactApplicationContext reactContext) {
@@ -24,10 +22,6 @@ public class RCTSmartconfigPackage implements ReactPackage {
      modules.add(new RCTSmartconfigModule(reactContext));
 
      return modules;
-    }
-    @Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-    	return Collections.emptyList();
     }
 
     @Override
